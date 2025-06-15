@@ -24,9 +24,9 @@ class Server {
         // Client created socket
         int *clientSocket;
         // Holds IP + port where server will listen
-        sockaddr_in *serverAddr{};
+        sockaddr_in *serverAddr;
         // Clients Info
-        sockaddr_in *clientAddr{};
+        sockaddr_in *clientAddr;
         // Stores clients 
         socklen_t *clientLen;
 
