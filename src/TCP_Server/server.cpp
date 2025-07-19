@@ -4,7 +4,7 @@
 #include <netinet/in.h>     // for sockaddr_in
 #include <sys/socket.h>     // for socket(), bind(), listen(), accept()
 
-#include "../include/server.h"
+#include "../../include/server.h"
 
 Server::Server() : serverSocket(nullptr), clientSocket(nullptr), serverAddr(nullptr), clientAddr(nullptr), clientLen(nullptr) {
     Server::initializeServer();
