@@ -5,7 +5,10 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <string.h>
-
+#include <cstdlib>
+#include <unistd.h>
+#include <netinet/in.h> 
+#include <sys/socket.h>
 
 class Server {
     public:

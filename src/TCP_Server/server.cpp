@@ -1,8 +1,4 @@
 #include <iostream>
-#include <cstdlib>
-#include <unistd.h>         // for close(), read()
-#include <netinet/in.h>     // for sockaddr_in
-#include <sys/socket.h>     // for socket(), bind(), listen(), accept()
 
 #include "../../include/server.h"
 
@@ -22,9 +18,14 @@ void Server::initializeServer() {
         std::exit(1);
     }
 
+    // using IPV4
     serverAddr->sin_family = AF_INET;
+    // binds an avilable net interface
     serverAddr->sin_addr.s_addr = INADDR_ANY;
+    // sets a listening port
     serverAddr->sin_port = htons(800);
+
+    // bind socket
     if (bind(*serverSocket, (sockaddr*)serverAddr, sizeof(*serverAddr)) < 0) {
         std::cerr << "Binding failed" << std::endl;
         std::exit(1);
@@ -53,9 +54,8 @@ void Server::startServer() {
 
     char buffer[1024] = {0};
     int bytes_read = read(*clientSocket, buffer, sizeof(buffer) - 1);
-    if (bytes_read > 0) {
+    if (bytes_read > 0) 
         std::cout << "Received:\n" << buffer << "\n";
-    }
 
     close(*clientSocket);
     close(*serverSocket);
